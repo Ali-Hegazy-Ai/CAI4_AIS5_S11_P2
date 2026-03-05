@@ -39,12 +39,18 @@ customer-data-etl/
 
 ## Team Responsibilities
 
+Team members: **Ali, Amin, Mennat Allah, Aseel, Habiba**
+
+Each role below is intentionally unassigned first so team members can claim ownership.
+
 ### 1) Data Collection / Extraction
+- Owner: **[Unassigned - Claim this role]**
 - Collect CRM and Excel source files.
 - Validate file names and columns.
 - Place files in `data/raw/`.
 
 ### 2) Data Cleaning / Transformation (ETL)
+- Owner: **[Unassigned - Claim this role]**
 - Build ADF pipelines and data flows.
 - Standardize columns, types, null handling, and duplicates.
 - Produce cleaned output in `data/clean/`.
@@ -54,17 +60,20 @@ customer-data-etl/
 	- `adf/linked_services/`
 
 ### 3) Data Modeling / Warehouse Design
+- Owner: **[Unassigned - Claim this role]**
 - Design warehouse tables (dimension/fact or simple reporting tables).
 - Create SQL scripts in `sql/scripts/`.
 - Keep naming consistent and readable.
 
 ### 4) Data Validation / Testing
+- Owner: **[Unassigned - Claim this role]**
 - Compare row counts: raw vs clean.
 - Check nulls, duplicates, and key consistency.
 - Confirm transformed values are correct.
 - Record quick validation notes in commit messages or phase notes.
 
 ### 5) Documentation & Presentation
+- Owner: **[Unassigned - Claim this role]**
 - Keep project progress updated in `docs/project_flow.md`.
 - Prepare final report slides/screenshots.
 - Explain source → transform → output clearly.
