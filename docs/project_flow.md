@@ -19,7 +19,7 @@ Conceptual progression:
 - Consolidate documentation and presentation narrative.
 
 ```mermaid
-graph LR
+flowchart LR
     A[Understand Sources and Business Context] --> B[Explore Data Characteristics]
     B --> C[Define Architecture Direction]
     C --> D[Plan ETL Phases and Ownership]
@@ -191,7 +191,7 @@ The structure should help the team separate conceptual thinking areas while main
 Team collaboration should be continuous and iterative. Roles should not operate in isolation, because design questions in one area often affect decisions in another.
 
 ```mermaid
-graph TD
+flowchart TD
     R1[Role 1\nData Collection and Source Context] --> R2[Role 2\nOrchestration and ETL Planning]
     R2 --> R4[Role 4\nQuality and Validation Thinking]
     R2 --> R3[Role 3\nModeling and Analytics Direction]
