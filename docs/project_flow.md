@@ -69,6 +69,14 @@ Questions this role should help answer:
 - What source-level risks could affect planning?
 - What context should be documented when files arrive?
 
+### Deliverables
+
+- List of data sources (APIs, CSV, JSON)
+- Sample raw datasets stored in `/data/raw`
+- Python extraction scripts (API calls, file ingestion)
+- Source schema preview (columns per dataset)
+- Data ingestion logs or tracking
+
 ## Role 2 — Data Cleaning & Orchestration (ETL)
 
 Owner: Ali
@@ -89,6 +97,14 @@ Questions this role should help answer:
 - Where are the largest unknowns in source consistency?
 - What should be treated as design assumptions versus confirmed facts?
 - How should planning decisions be documented for traceability?
+
+### Deliverables
+
+- Python transformation scripts
+- Unified schema across all sources
+- Data cleaning logic (null handling, type fixing, deduplication)
+- Main ETL pipeline script (e.g. main.py)
+- Pipeline flow definition (ADF pipeline or Airflow DAG)
 
 ## Role 3 — Data Modeling, SQL Architecture & Power BI
 
@@ -111,6 +127,14 @@ Questions this role should help answer:
 - How should modeling decisions be explained to non-technical stakeholders?
 - What assumptions must be validated before finalizing model direction?
 
+### Deliverables
+
+- Database schema design (tables like customers, leads, etc.)
+- SQL scripts in `/sql/scripts`
+- Table creation scripts (DDL)
+- Sample queries for validation
+- (Optional) basic Power BI dataset connection
+
 ## Role 4 — Data Quality & Automated Testing
 
 Owner: Aseel,Habiba
@@ -132,6 +156,16 @@ Questions this role should help answer:
 - How should quality findings influence architecture and pipeline planning?
 - Which open quality questions must be resolved before implementation?
 
+### Deliverables
+
+- Data validation rules (email format, required fields, uniqueness)
+- Data quality scripts/checks
+- Logic for:
+  - `/data/clean`
+  - `/data/rejected`
+  - `/data/quarantine`
+- Data quality report (counts of valid/invalid records)
+
 ## Role 5 — Documentation
 
 Owner: Ali, Amin, Mennat Allah, Aseel, Habiba
@@ -152,6 +186,15 @@ Questions this role should help answer:
 - Which concepts remain unclear and need better explanation?
 - How should progress be communicated each week?
 - Does documentation reflect shared team understanding or isolated opinions?
+
+### Deliverables
+
+- Updated README.md (simplified workflow)
+- Detailed documentation in `/docs`
+- Wiki pages for concepts and onboarding
+- Architecture diagrams
+- Weekly progress updates
+- Final presentation materials
 
 # Data Exploration
 
