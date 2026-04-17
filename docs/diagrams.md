@@ -170,3 +170,98 @@ flowchart TD
     Habiba -.-> D2
     Habiba -.-> D8
 ```
+
+## 9. Enterprise Data Platform and AI Architecture
+
+This diagram presents a polished, portfolio-ready left-to-right enterprise architecture for an end-to-end data and AI platform.
+
+```mermaid
+flowchart LR
+    %% Layer groups in exact required order
+    subgraph L1[Ingestion]
+      direction TB
+      I1["Connectors\nKafka • CDC • Batch Upload"]
+      I2["Orchestration\nADF / Airflow Schedules"]
+    end
+
+    subgraph L2[Raw Landing]
+      direction TB
+      R1["Immutable Storage\nBronze Zone / Object Store"]
+      R2["Metadata Capture\nSource • Arrival Time • Schema"]
+    end
+
+    subgraph L3[Validation and Quarantine]
+      direction TB
+      V1["Data Quality Rules\nSchema • Nulls • Duplicates"]
+      V2["Quarantine Queue\nRejected Records + Issue Codes"]
+    end
+
+    subgraph L4[Transformation and Feature Engineering]
+      direction TB
+      T1["Standardization\nType Casting • Business Logic"]
+      T2["Feature Pipelines\nAggregates • Time Windows"]
+    end
+
+    subgraph L5[Warehouse Modeling]
+      direction TB
+      W1["Dimensional Models\nStar/Snowflake Mart Layers"]
+      W2["Performance Layer\nPartitioning • Materialized Views"]
+    end
+
+    subgraph L6[Governance and Lineage]
+      direction TB
+      G1["Catalog & Policies\nPII Tags • RBAC • Retention"]
+      G2["Lineage Graph\nColumn-Level Traceability"]
+    end
+
+    subgraph L7[BI Layer]
+      direction TB
+      B1["Semantic Models\nMetrics Store • KPIs"]
+      B2["Dashboards\nExecutive & Operational Analytics"]
+    end
+
+    subgraph L8[ML and NLP]
+      direction TB
+      M1["Model Training\nForecasting • Classification"]
+      M2["NLP Pipelines\nEntity Extraction • Sentiment"]
+    end
+
+    subgraph L9[LLM Layer]
+      direction TB
+      LL1["Prompt & Context Engine\nRAG • Guardrails • Caching"]
+      LL2["Model Ops\nRouting • Evaluation • Cost Controls"]
+    end
+
+    subgraph L10[Serving APIs]
+      direction TB
+      S1["Data Products API\nREST / GraphQL / gRPC"]
+      S2["Inference Endpoints\nReal-Time Scoring + GenAI"]
+    end
+
+    subgraph L11[Feedback Loop and Retraining]
+      direction TB
+      F1["Observability\nDrift • Latency • Quality Signals"]
+      F2["Continuous Improvement\nHuman Feedback -> Retraining"]
+    end
+
+    %% Primary left-to-right flow
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6 --> L7 --> L8 --> L9 --> L10 --> L11
+
+    %% Operational feedback paths
+    L11 -. Model/Prompt Updates .-> L8
+    L11 -. Policy & Data Quality Insights .-> L6
+    L11 -. Product Usage Signals .-> L10
+
+    %% Enterprise styling
+    style L1 fill:#eaf4ff,stroke:#7aa7d9,stroke-width:1.5px,rx:8,ry:8
+    style L2 fill:#eef7ff,stroke:#7aa7d9,stroke-width:1.5px,rx:8,ry:8
+    style L3 fill:#f2f8ff,stroke:#7aa7d9,stroke-width:1.5px,rx:8,ry:8
+    style L4 fill:#eefaf4,stroke:#69b28f,stroke-width:1.5px,rx:8,ry:8
+    style L5 fill:#ecf9f0,stroke:#69b28f,stroke-width:1.5px,rx:8,ry:8
+    style L6 fill:#fff7ea,stroke:#c49a57,stroke-width:1.5px,rx:8,ry:8
+    style L7 fill:#fff3ef,stroke:#c98070,stroke-width:1.5px,rx:8,ry:8
+    style L8 fill:#f5f1ff,stroke:#8d78c6,stroke-width:1.5px,rx:8,ry:8
+    style L9 fill:#f0edff,stroke:#8d78c6,stroke-width:1.5px,rx:8,ry:8
+    style L10 fill:#eef4ff,stroke:#6787c8,stroke-width:1.5px,rx:8,ry:8
+    style L11 fill:#f9fbff,stroke:#5f7fb2,stroke-width:1.5px,rx:8,ry:8
+```
