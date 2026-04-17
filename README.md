@@ -14,13 +14,45 @@
 
 ```mermaid
 flowchart LR
-    A[CRM CSV\ncrm_customers_YYYYMMDD.csv] --> R[data/raw/]
-    B[Excel XLSX\nexcel_customers_YYYYMMDD.xlsx] --> R
-    R --> T[ADF Data Flow\ndf_merge_transform]
-    T --> C[data/clean/\ncustomers_clean.csv]
-    T --> X[data/rejected/\ndata/quarantine/]
-    C --> S[SQL Server\ndbo.Customers]
-    S --> AN[Analytics / BI\nPower BI · Excel · SSMS]
+    subgraph Sources [Data Sources]
+        direction TB
+        S1[SQL CRM Example Data\nTop Pick]
+        S2[Brazilian E-Commerce - Olist\nTop Pick]
+        S3[Lead Scoring Dataset\nTop Pick]
+        S4[Customer Support Ticket Dataset\nTop Pick]
+        S5[Mockaroo / Faker\nFallback / Tools]
+    end
+
+    subgraph Storage [Ingestion Layer]
+        R[data/raw/\nCSV & JSON]
+    end
+
+    subgraph ETL [ETL Transform Step]
+        T[ADF Data Flow\ndf_merge_transform]
+        subgraph Rules [Mapping Rules]
+            M1[ContactID -> customer_id]
+            M2[EmailAddress -> email]
+            M3[CreatedDate -> created_at]
+        end
+    end
+
+    subgraph Output [Clean Data]
+        C[data/clean/\nUnified Schema]
+        X[data/rejected/\nQuarantine]
+    end
+
+    subgraph Analytics [Downstream]
+        DB[SQL Server\ndbo.CRM_Master]
+        BI[Power BI / Excel\nAnalytics]
+    end
+
+    Sources --> R
+    R --> T
+    T --> C
+    T --> X
+    C --> DB
+    DB --> BI
+
 ```
 
 **Architecture pattern:** Medallion — `Bronze (raw/)` → `Silver (ADF transform)` → `Gold (clean/ + SQL)`
